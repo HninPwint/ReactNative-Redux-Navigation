@@ -28,7 +28,6 @@ export default function reducer(
     case GET_REPO_INFO:
       return { ...state, loadingInfo: true };
     case GET_REPO_INFO_SUCCESS:
-      console.log("Reaching Reducer", action.payload.data);
       return { ...state, loadingInfo: false, repoInfo: action.payload.data };
     case GET_REPO_INFO_FAIL:
       console.log(action.payload);

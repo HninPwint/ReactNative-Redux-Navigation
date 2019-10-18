@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, Button, FlatList } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createStore, applyMiddleware } from "redux";
 import { Provider, connect } from "react-redux";
 import axios from "axios";
@@ -9,6 +10,7 @@ import axiosMiddleware from "redux-axios-middleware";
 import reducer, { listRepos } from "./redux/reducer";
 import HomeScreen from "./Screens/Home";
 import RepoDetail from "./Screens/RepoDetail";
+import Profile from "./Screens/Profile";
 
 const RootSnack = createStackNavigator(
   {
@@ -19,7 +21,15 @@ const RootSnack = createStackNavigator(
     initialRouteName: "Home"
   }
 );
-const AppContainer = createAppContainer(RootSnack);
+
+const BottomTabNavigator = createBottomTabNavigator(
+  {
+    Home: RootSnack,
+    Profile: Profile
+  }
+);
+
+const AppContainer = createAppContainer(BottomTabNavigator);
 
 const client = axios.create({
   baseURL: "https://api.github.com",

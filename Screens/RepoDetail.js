@@ -10,16 +10,15 @@ class RepoDetail extends Component {
 
   componentDidMount() {
     const { name } = this.props.navigation.state.params;
-    console.log("name", name);
     this.props.getRepoDetail("relferreira", name);
     // console.log('this.props.getRepoDetail', this.props.getRepoDetail);
   }
 
   render() {
     const { repoInfo, loadingInfo } = this.props;
-    console.log("loadingInfo", loadingInfo);
+    // console.log("loadingInfo", loadingInfo);
     if (loadingInfo) return <Text>Loading...</Text>;
-    console.log("this.props.repoInfo", repoInfo);
+    // console.log("this.props.repoInfo", repoInfo);
 
     const {
       name,
@@ -30,7 +29,7 @@ class RepoDetail extends Component {
     } = repoInfo;
 
     return (
-      <View>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text> {name}</Text>
         <Text> {full_name}</Text>
         <Text> Description: {description}</Text>
